@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="https://getbootstrap.com.br/favicon.ico">
+
+  <title>INPE</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="./script/script.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark" id="A">
+      <div class="col-md-12 px-0">
+        <h1 class="display-4 font-italic text-center">INSTITUTO NACIONAL DE PESQUISAS ESPACIAIS</h1>
+        <p class="lead my-3 text-center">INSTITUTO NACIONAL DE PESQUISAS ESPACIAIS</p>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="B">
+      <a class="navbar-brand" href="#">Menu</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="#">Tempo <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#">Clima</a>
+          <a class="nav-item nav-link" href="#">Previsão Numérica</a>
+          <a class="nav-item nav-link disabled" href="#">Dados Observacionais</a>
+          <a class="nav-item nav-link disabled" href="#">Satélite</a>
+        </div>
+      </div>
+    </nav>
+
+
+
+    <div class="row lg-12">
+      <div class="col-md-8" id="C">
+        <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+          <div class="card-body d-flex flex-column align-items-start">
+            <strong class="d-inline-block mb-2 text-primary">Previsão de tempo para os próximos 7 dias (SP)</strong>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <nav>
+                  <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="op1" name="0" data-toggle="tab" href="#"
+                      onclick="getValue(this.name, json)">1</a>
+                    <a class="nav-item nav-link" id="op2" name="1" data-toggle="tab" href="#"
+                      onclick="getValue(this.name, json)">2</a>
+                    <a class="nav-item nav-link" id="op3" name="2" data-toggle="tab" href="#"
+                      onclick="getValue(this.name, json)">3</a>
+                    <a class="nav-item nav-link" id="op4" name="3" data-toggle="tab" href="#"
+                      onclick="getValue(this.name, json)">4</a>
+                    <a class="nav-item nav-link" id="op5" name="4" data-toggle="tab" href="#"
+                      onclick="getValue(this.name, json)">5</a>
+                    <a class="nav-item nav-link" id="op6" name="5" data-toggle="tab" href="#"
+                      onclick="getValue(this.name, json)">6</a>
+                    <a class="nav-item nav-link" id="op7" name="6" data-toggle="tab" href="#"
+                      onclick="getValue(this.name, json)">7</a>
+                  </div>
+                </nav>
+
+              </div>
+            </div>
+
+            <div id="temp">
+              <p>Data: <span id="data">: </span></p>
+              <p>Tempo: <span id="tempo">: </span></p>
+              <p>Mínima: <span id="min">: </span></p>
+              <p>Máxima: <span id="max">: </span></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" id="D">
+        <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+          <div class="card-body d-flex flex-column align-items-start">
+            <strong class="d-inline-block mb-2 text-success">Design</strong>
+            <h3 class="mb-0">
+              <a class="text-dark" href="#">Título do post</a>
+            </h3>
+            <div class="mb-1 text-muted">18 de Maio</div>
+            <p class="card-text mb-auto">Este é um card maior com suporte à texto em baixo</p>
+            <a href="#">Continue lendo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Footer -->
+  <footer class="page-footer font-small blue" id="E">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="#"> Lucas Paixão</a>
+      <div id="voltarTopo">
+        <a>
+        </a><img href="#" src="./img/voltartop.png" alt="Topo" width=60 height=60 id="subir">
+        </a>
+      </div>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+  <style>
+    #subir {
+      position: fixed;
+      bottom: 0px;
+      right: 0px;
+    }
+
+    /*Esconde a dive de classe Overlay caso seja identificado que o width Mobile maximo deseja igual ou menor que 980px*/
+    @media only screen and (max-width: 980px) {
+      #D {
+        display: none !important;
+      }
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+      $('#subir').click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+        return false;
+      });
+    });
+  </script>
+
+  <script>
+
+  </script>
